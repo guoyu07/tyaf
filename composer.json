@@ -1,0 +1,12 @@
+{
+    "name": "administrator/tyaf",
+    "authors": [
+        {
+            "name": "vate",
+            "email": "vate96@foxmail.com"
+        }
+    ],
+    "require": {
+        "filp/whoops":"*"
+    }
+}
