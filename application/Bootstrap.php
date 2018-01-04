@@ -49,7 +49,9 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
 
     public function _initFunction(Yaf\Dispatcher $dispatcher)
     {
+
         yaf\loader::import('Function.php');
+
     }
 
 
@@ -70,8 +72,24 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
 
     public function _initDB()
     {
-        $db = new db();
-        dd($db);
+        // 数据库连接池方案 尚未解决
+        //new db();
+        //die;
+        $db = new \model\Medoo([
+            'database_type' => 'mysql',
+            'database_name' => $this->_config->db->database,
+            'server' => $this->_config->db->hostname,
+            'username' => $this->_config->db->username,
+            'password' => $this->_config->db->password,
+            'charset' => 'utf8',
+            'port' => 3306,
+            'prefix' => '',
+            // PDO驱动选项 http://www.php.net/manual/en/pdo.setattribute.php
+            'option' => [
+                PDO::ATTR_CASE => PDO::CASE_NATURAL
+            ]
+        ]);
+        \Yaf\Registry::set('db', $db);
     }
 
 }
