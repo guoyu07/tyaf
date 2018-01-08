@@ -5,9 +5,9 @@ requirejs(['jquery','toastr','inspinia'], function ($,toastr) {
                 closeButton: true,
                 progressBar: true,
                 showMethod: 'slideDown',
-                timeOut: 200000000
+                timeOut: 10
             };
-            toastr.error('请放心使用', '加载完成');
+            toastr.success('请放心使用', '加载完成');
     
         }, 100);
     });

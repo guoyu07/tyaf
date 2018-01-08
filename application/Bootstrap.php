@@ -26,8 +26,8 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
      * -- 2、接管PHP错误。
      */
     public function _initError() {
-        $error_switch = $this->_config->error_switch;
-        ini_set('display_errors', $error_switch);
+//        $error_switch = $this->_config->error_switch;
+//        ini_set('display_errors', $error_switch);
     }
 
     public function _initPlugin(Yaf\Dispatcher $dispatcher)
@@ -44,13 +44,15 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
 
     public function _initView(Yaf\Dispatcher $dispatcher)
     {
+        $dispatcher->autoRender(false);
+        //$dispatcher->getInstance()->disableView();//关闭自动渲染视图
         //在这里注册自己的view控制器，例如smarty,firekylin
     }
 
     public function _initFunction(Yaf\Dispatcher $dispatcher)
     {
 
-        yaf\loader::import('Function.php');
+        yaf\loader::import('function.php');
 
     }
 
@@ -69,13 +71,12 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
             \Yaf\Registry::set('session', $session);
         }
     }
-
     public function _initDB()
     {
         // 数据库连接池方案 尚未解决
         //new db();
         //die;
-        $db = new \model\Medoo([
+        $db = new \models\Medoo([
             'database_type' => 'mysql',
             'database_name' => $this->_config->db->database,
             'server' => $this->_config->db->hostname,

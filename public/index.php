@@ -9,7 +9,7 @@
 
 define('APPLICATION_PATH', dirname(__FILE__).'/../');
 define('APP_PATH', dirname(__FILE__).'/../');
-//ini_set('display_errors',"On");
+ini_set('display_errors',"On");
 
 $application = new Yaf\Application( APPLICATION_PATH . "/conf/application.ini");
 

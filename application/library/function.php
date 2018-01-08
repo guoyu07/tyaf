@@ -190,6 +190,41 @@ function cutstr($string, $sublen, $start = 0, $code = 'UTF-8')
     }
 }
 
+
+/**
+ * @name Url
+ * @desc  生成连接地址
+ * @author 胡扬星
+ * @createtime : 2018/1/8
+ * @param $params
+ * @return string
+ */
+ function fUrl($params)
+{
+    $url = 'http://';
+    if (isset($_SERVER ['HTTPS']) && $_SERVER ['HTTPS'] == 'on') {
+        $url = 'https://';
+    }
+    $url .= $_SERVER['SERVER_NAME'].'/'.$params;
+    echo $url;
+}
+/**
+ * @name Url
+ * @desc  生成连接地址
+ * @author 胡扬星
+ * @createtime : 2018/1/8
+ * @param $params
+ * @return string
+ */
+function bUrl($params)
+{
+    $url = 'http://';
+    if (isset($_SERVER ['HTTPS']) && $_SERVER ['HTTPS'] == 'on') {
+        $url = 'https://';
+    }
+    $url .= $_SERVER['SERVER_NAME'].'/'.$params;
+    return $url;
+}
 /**
  * 发送邮件方法
  * @param $config  邮箱配置
@@ -235,3 +270,4 @@ function sendmail( $toemail, $title, $content)
     }
     return $result;
 }
+

@@ -43,7 +43,7 @@ class session{
      * 清除session
      * @param  String  $name  session name
      */
-    private static function clear($name){
+    public static function clear($name){
         unset($_SESSION[$name]);
     }
 

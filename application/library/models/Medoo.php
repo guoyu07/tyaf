@@ -8,8 +8,7 @@
  * Released under the MIT license
  */
 
-namespace model;
-
+namespace models;
 use PDO;
 use Exception;
 use PDOException;
