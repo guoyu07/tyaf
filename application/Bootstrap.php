@@ -26,8 +26,8 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
      * -- 2、接管PHP错误。
      */
     public function _initError() {
-//        $error_switch = $this->_config->error_switch;
-//        ini_set('display_errors', $error_switch);
+        $error_switch = $this->_config->error_switch;
+        ini_set('display_errors', $error_switch);
     }
 
     public function _initPlugin(Yaf\Dispatcher $dispatcher)
@@ -68,19 +68,14 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
 
     public function _initView(Yaf\Dispatcher $dispatcher)
     {
-        $dispatcher->autoRender(false);
-        //$dispatcher->getInstance()->disableView();//关闭自动渲染视图
+        $dispatcher->autoRender(false);//关闭自动渲染视图
         //在这里注册自己的view控制器，例如smarty,firekylin
     }
 
     public function _initFunction(Yaf\Dispatcher $dispatcher)
     {
-
         yaf\loader::import('function.php');
-
     }
-
-
     public function _initSession(Yaf\Dispatcher $dispatcher)
     {
         if(!preg_match("/cli/i", php_sapi_name()))
