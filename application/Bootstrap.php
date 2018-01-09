@@ -39,6 +39,30 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
 
     public function _initRoute(Yaf\Dispatcher $dispatcher)
     {
+        $router = Yaf\Dispatcher::getInstance()->getRouter();
+        $route = array();
+        // 默认进入index/index
+        $modules = Yaf\Application::app()->getModules();
+        if($modules) {
+            foreach ($modules as $module) {
+                $name = strtolower($module);
+                $route[$name] = new Yaf\Route\Rewrite(
+                    '/('.$name.'|'.$name.'/|'.$name.'/index|'.$name.'/index/)$',
+                    array(
+                        'controller' => 'index',
+                        'action' => 'index',
+                        'module' => $name,
+                    )
+                );
+            }
+        }
+        $route['admin/login'] = new Yaf\Route\Rewrite('admin/login', array('controller' => 'login', 'action' => 'login', 'module' => 'admin'));
+        //使用路由器装载路由协议
+        foreach ($route as $k => $v) {
+            $router->addRoute($k, $v);
+        }
+        //自定义路由
+        Yaf\Registry::set('routes', $route);
         //在这里注册自己的路由协议,默认使用简单路由
     }
 
@@ -92,5 +116,6 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
         ]);
         \Yaf\Registry::set('db', $db);
     }
+
 
 }

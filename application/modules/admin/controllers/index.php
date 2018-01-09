@@ -15,4 +15,9 @@ class indexController extends  common\admin {
             $data = '';
             $this->getView()->assign('data',$data)->display('index/index.html');
         }
+        public function testAction()
+        {
+            echo 1;
+        }
+
  }
