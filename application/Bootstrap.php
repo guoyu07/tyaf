@@ -26,8 +26,7 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
      * -- 2、接管PHP错误。
      */
     public function _initError() {
-        $error_switch = $this->_config->error_switch;
-        ini_set('display_errors', $error_switch);
+        Yaf\Dispatcher::getInstance()->catchException(TRUE);
     }
 
     public function _initPlugin(Yaf\Dispatcher $dispatcher)
