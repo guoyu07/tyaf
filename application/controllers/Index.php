@@ -21,7 +21,7 @@ class IndexController extends common\controller {
      */
 	public function indexAction() {
 
-        echo 1111111;1111
+        echo 1111111;
 	   // $code = captcha::create();
         return true;
 	}
