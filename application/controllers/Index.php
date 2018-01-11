@@ -20,15 +20,11 @@ class IndexController extends common\controller {
      * 对于如下的例子, 当访问http://yourhost/tyaf/index/index/index/name/vagrant 的时候, 你就会发现不同
      */
 	public function indexAction() {
-
-        echo 1111111;
-	   // $code = captcha::create();
-        return true;
+        echo 'this is 前端';
 	}
 
 	public function testAction()
     {
         echo session::get('code');
-        return false;
     }
 }
