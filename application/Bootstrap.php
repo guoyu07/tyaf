@@ -26,7 +26,18 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
      * -- 2、接管PHP错误。
      */
     public function _initError() {
-        Yaf\Dispatcher::getInstance()->catchException(TRUE);
+        if( $this->_config->get('debug') && PHP_SAPI != 'cli') {
+            //打开PHP的错误显示
+            ini_set('display_errors',true);
+            //载入友好的错误显示类
+            $whoops = new \Whoops\Run;
+            $errorPage = new \Whoops\Handler\PrettyPageHandler;
+            $errorPage->setPageTitle("框架错误!!!");
+            $whoops->pushHandler($errorPage);
+            $whoops->register();
+        } else {
+            ini_set('display_errors',false);
+        }
     }
 
     public function _initPlugin(Yaf\Dispatcher $dispatcher)
@@ -77,38 +88,38 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
     }
     public function _initSession(Yaf\Dispatcher $dispatcher)
     {
-//        if(!preg_match("/cli/i", php_sapi_name()))
-//        {
-//            $type = ucfirst($this->_config->session->type);
-//            $handler = "getSession{$type}Cache";
-//            $cache = YCore::$handler();
-//            $prefix = $this->_config->session->prefix . ip2long($_SERVER['SERVER_ADDR']) . '_';
-//            $sess = new \session\RedisHandler($cache,  $this->_config->session->expire , $prefix);
-//            session_set_save_handler($sess);
-//            $session = Yaf\Session::getInstance();
-//            \Yaf\Registry::set('session', $session);
-//        }
+        if(!preg_match("/cli/i", php_sapi_name()))
+        {
+            $type = ucfirst($this->_config->session->type);
+            $handler = "getSession{$type}Cache";
+            $cache = YCore::$handler();
+            $prefix = $this->_config->session->prefix . ip2long($_SERVER['SERVER_ADDR']) . '_';
+            $sess = new \session\RedisHandler($cache,  $this->_config->session->expire , $prefix);
+            session_set_save_handler($sess);
+            $session = Yaf\Session::getInstance();
+            \Yaf\Registry::set('session', $session);
+        }
     }
     public function _initDB()
     {
         // 数据库连接池方案 尚未解决
         //new db();
         //die;
-//        $db = new \models\Medoo([
-//            'database_type' => 'mysql',
-//            'database_name' => $this->_config->db->database,
-//            'server' => $this->_config->db->hostname,
-//            'username' => $this->_config->db->username,
-//            'password' => $this->_config->db->password,
-//            'charset' => 'utf8',
-//            'port' => 3306,
-//            'prefix' => '',
-//            // PDO驱动选项 http://www.php.net/manual/en/pdo.setattribute.php
-//            'option' => [
-//                PDO::ATTR_CASE => PDO::CASE_NATURAL
-//            ]
-//        ]);
-//        \Yaf\Registry::set('db', $db);
+        $db = new \models\Medoo([
+            'database_type' => 'mysql',
+            'database_name' => $this->_config->db->database,
+            'server' => $this->_config->db->hostname,
+            'username' => $this->_config->db->username,
+            'password' => $this->_config->db->password,
+            'charset' => 'utf8',
+            'port' => 3306,
+            'prefix' => '',
+            // PDO驱动选项 http://www.php.net/manual/en/pdo.setattribute.php
+            'option' => [
+                PDO::ATTR_CASE => PDO::CASE_NATURAL
+            ]
+        ]);
+        \Yaf\Registry::set('db', $db);
     }
 
 

@@ -7,6 +7,6 @@
         }
     ],
     "require": {
-        "filp/whoops":"*"
+        "filp/whoops":"^2.1"
     }
 }

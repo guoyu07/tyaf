@@ -34,4 +34,12 @@ class YCore{
             return $redis;
         }
     }
+
+    public function error_handler()
+    {
+        $whoops = new \Whoops\Run;
+        dd($whoops);
+        $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+        $whoops->register();
+    }
 }
