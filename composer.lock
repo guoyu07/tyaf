@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e38498dd847f3da004fb8f466e878723",
+    "content-hash": "cd2ba0ed246b569e0ffa7f0b81dc2510",
     "packages": [
         {
             "name": "filp/whoops",
@@ -68,6 +68,48 @@
             "time": "2017-11-23T18:22:44+00:00"
         },
         {
+            "name": "justmd5/yaf-twig-adapter",
+            "version": "1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/justmd5/yaf-twig-adapter.git",
+                "reference": "acd59faf88c86fa5b8f5474b80dd5cac6b49956e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/justmd5/yaf-twig-adapter/acd59faf88c86fa5b8f5474b80dd5cac6b49956e.zip",
+                "reference": "acd59faf88c86fa5b8f5474b80dd5cac6b49956e",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0",
+                "twig/twig": "~v1.9"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JustMd5\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "justmd5",
+                    "email": "ding21st@gmail.com"
+                }
+            ],
+            "keywords": [
+                "Yet Another Framework",
+                "twig for yaf",
+                "twig for yet another framework",
+                "yar集成twig"
+            ],
+            "time": "2016-04-25T03:34:53+00:00"
+        },
+        {
             "name": "psr/log",
             "version": "1.0.2",
             "source": {
@@ -113,6 +155,71 @@
                 "psr-3"
             ],
             "time": "2016-10-10T12:19:37+00:00"
+        },
+        {
+            "name": "twig/twig",
+            "version": "v1.35.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twigphp/Twig.git",
+                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/twigphp/Twig/daa657073e55b0a78cce8fdd22682fddecc6385f.zip",
+                "reference": "daa657073e55b0a78cce8fdd22682fddecc6385f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "psr/container": "^1.0",
+                "symfony/debug": "~2.7",
+                "symfony/phpunit-bridge": "~3.3@dev"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.35-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Twig_": "lib/"
+                },
+                "psr-4": {
+                    "Twig\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
+                },
+                {
+                    "name": "Armin Ronacher",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "http://twig.sensiolabs.org/contributors",
+                    "role": "Contributors"
+                }
+            ],
+            "description": "Twig, the flexible, fast, and secure template language for PHP",
+            "homepage": "http://twig.sensiolabs.org",
+            "keywords": [
+                "templating"
+            ],
+            "time": "2017-09-27T18:06:46+00:00"
         }
     ],
     "packages-dev": [],
