@@ -25,6 +25,6 @@ class IndexController extends common\controller {
 
 	public function testAction()
     {
-        echo session::get('code');
+//        echo session::get('code');
     }
 }

@@ -17,11 +17,15 @@ class IndexController extends  common\admin {
         }
         public function testAction()
         {
-            echo 1;
+//            echo 1;
         }
         public function mainAction()
         {
             $data = '';
             $this->getView()->assign('data',$data)->display('index/main.html');
+        }
+        public function settingAction()
+        {
+            echo 111111111111111111111111111;
         }
  }
