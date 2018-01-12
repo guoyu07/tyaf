@@ -9,6 +9,8 @@
 
 define('APPLICATION_PATH', dirname(__FILE__).'/../');
 define('APP_PATH', dirname(__FILE__).'/../');
+define('APP_NAME', 'application');
+define('VIEWS_PATH', APPLICATION_PATH.APP_NAME.'/views/');
 
 
 $application = new Yaf\Application( APPLICATION_PATH . "/conf/application.ini");

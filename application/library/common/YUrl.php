@@ -197,18 +197,14 @@ class YUrl {
              YCore::safe_replace($_SERVER['QUERY_STRING']) : $path_info);
         return $sys_protocal . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '') . $relate_url;
     }
-    
-    /**
-     * 获取静态资源URL。
-     * 
-     * @param string $type css、js、image
-     * @param string $file_relative_path 资源相对路径。如：/jquery/plugins/cookie.js
-     * @return string
-     */
-    public static function assets($file_relative_path) {
-        $statics_url =  \Yaf\Registry::get('statics_domain_name');
-        $statics_url = trim($statics_url, '/');
-        $file_relative_path = trim($file_relative_path, '/');
-        return $statics_url . $file_relative_path;
+
+    public static function local_url()
+    {
+        $relate_url = isset($_SERVER['REQUEST_URI']);
+        $sys_protocal = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
+        return $sys_protocal . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '') . $relate_url;
     }
+
+    
+
 }

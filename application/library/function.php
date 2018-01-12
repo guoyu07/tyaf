@@ -208,6 +208,38 @@ function cutstr($string, $sublen, $start = 0, $code = 'UTF-8')
     $url .= $_SERVER['SERVER_NAME'].'/'.$params;
     echo $url;
 }
+
+/**
+ * 获取域名
+ *
+ * @param string $type css、js、image
+ * @param string $file_relative_path 资源相对路径。如：/jquery/plugins/cookie.js
+ * @return string
+ */
+ function local_url()
+{
+    $relate_url = isset($_SERVER['REQUEST_URI']);
+    $sys_protocal = isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == '443' ? 'https://' : 'http://';
+    return $sys_protocal . (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : '') . $relate_url;
+}
+
+/**
+ * 获取静态资源URL。
+ *
+ * @param string $type css、js、image
+ * @param string $file_relative_path 资源相对路径。如：/jquery/plugins/cookie.js
+ * @return string
+ */
+function assets($file_relative_path) {
+    $statics_url =  \Yaf\Registry::get('statics_domain_name');
+    if(!$statics_url)
+    {
+        $statics_url = local_url();
+    }
+    $statics_url = trim($statics_url, '/');
+    $file_relative_path = trim($file_relative_path, '/');
+    return $statics_url . $file_relative_path;
+}
 /**
  * @name Url
  * @desc  生成连接地址
