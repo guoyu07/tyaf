@@ -230,6 +230,11 @@ function cutstr($string, $sublen, $start = 0, $code = 'UTF-8')
  * @return string
  */
 function assets($file_relative_path) {
+    $temp = \Yaf\Registry::get('templates');
+    if(!$temp)
+    {
+        $temp = 'hadmin';
+    }
     $statics_url =  \Yaf\Registry::get('statics_domain_name');
     if(!$statics_url)
     {
@@ -237,7 +242,7 @@ function assets($file_relative_path) {
     }
     $statics_url = trim($statics_url, '/');
     $file_relative_path = trim($file_relative_path, '/');
-    return $statics_url.'/' . $file_relative_path;
+    return $statics_url.'/' . "$temp/".$file_relative_path;
 }
 /**
  * @name Url
@@ -269,36 +274,45 @@ function bUrl($params)
 function sendmail( $toemail, $title, $content)
 {
 
-    Yaf_Loader::import('phpmailer.php');
-    $config = new Yaf_Config_Ini('./conf/application.ini', 'common');
+    //******************** 配置信息 ********************************
     $mail = new PHPMailer();
-
-    $mail->CharSet = "utf-8";
-    $mail->Encoding = "base64";
-
-    $mail->IsSMTP(); // set mailer to use SMTP
-    $mail->Host = $config->mail->host; // specify main and backup server
-    $mail->SMTPAuth = true; // turn on SMTP authentication
-    $mail->Username = $config->mail->username; // SMTP username
-    $mail->Password = $config->mail->password; // SMTP password
-
-    $mail->From = $config->mail->from;
-    $mail->FromName = $config->mail->fromname;
-    $mail->AddReplyTo($config->mail->replymail, $config->mail->replyname);	//用户收到邮件点回复时候 回复那一栏自动填写的Email
-
-    $mail->AddAddress($toemail, '');
-
-    $mail->IsHTML(true); // set email format to HTML
-
+    // 是否启用smtp的debug进行调试 开发环境建议开启 生产环境注释掉即可 默认关闭debug调试模式
+    $mail->SMTPDebug = 1;
+    // 使用smtp鉴权方式发送邮件
+    $mail->isSMTP();
+    // smtp需要鉴权 这个必须是true
+    $mail->SMTPAuth = true;
+    // 链接qq域名邮箱的服务器地址
+    $mail->Host = 'smtp.qq.com';
+    // 设置使用ssl加密方式登录鉴权
+    $mail->SMTPSecure = 'ssl';
+    // 设置ssl连接smtp服务器的远程服务器端口号
+    $mail->Port = 465;
+    // 设置发送的邮件的编码
+    $mail->CharSet = 'UTF-8';
+    // 设置发件人昵称 显示在收件人邮件的发件人邮箱地址前的发件人姓名
+    $mail->FromName = '发件人昵称';
+    // smtp登录的账号 QQ邮箱即可
+    $mail->Username = 'vate96@foxmail.com';
+    // smtp登录的密码 使用生成的授权码
+    $mail->Password = 'trbmaeojihqidiea';
+    // 设置发件人邮箱地址 同登录账号
+    $mail->From = 'vate96@foxmail.com';
+    // 邮件正文是否为html编码 注意此处是一个方法
+    $mail->isHTML(true);
+    // 设置收件人邮箱地址
+    $mail->addAddress($toemail);
+    // 添加多个收件人 则多次调用方法即可
+    // 添加该邮件的主题
     $mail->Subject = $title;
+    // 添加邮件正文
     $mail->Body = $content;
-    $mail->AltBody = "对不起, 你的邮箱客户端不支持HTML!!";
-    $result = $mail->Send();
-    if($result) {
-        // echo 'Mailer Error: ' . $mail->ErrorInfo;
-    } else {
-        // echo "Message sent!恭喜，邮件发送成功！";
-    }
-    return $result;
+    // 为该邮件添加附件
+//        $mail->addAttachment('./example.pdf');
+    // 发送邮件 返回状态
+    return $mail->send();
 }
+
+
+
 

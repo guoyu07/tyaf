@@ -26,6 +26,7 @@ class IndexController extends  common\admin {
         }
         public function settingAction()
         {
-            echo 111111111111111111111111111;
+            $data = '';
+            $this->getView()->assign('data',$data)->display('index/setting.html');
         }
  }

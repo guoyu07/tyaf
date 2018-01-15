@@ -360,7 +360,7 @@
                     </form>
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
-                    <li >
+                    <li id="refresh">
                         <a href="#">
                             <i class="fa fa-refresh"></i>
                         </a>
@@ -463,6 +463,16 @@
 
 <!-- 第三方插件 -->
 <script src="../../hadmin/js/plugins/pace/pace.min.js"></script>
+
+<script>
+    $(function(){
+        $('#refresh').click(function () {
+            // document.frames('J_iframe').location.reload()
+            document.getElementById('J_iframe').contentWindow.location.reload(true);
+        })
+
+    })
+</script>
 
 </body>
 
