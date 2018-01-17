@@ -40,16 +40,16 @@
                     </a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a class="J_menuItem" href="<?php fUrl('admin/index/setting');?>">网站设置</a>
+                            <a class="J_menuItem" href="<?php fUrl('admin/setting/lists');?>">网站设置</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<?php fUrl('admin/index/link');?>">友情链接</a>
+                            <a class="J_menuItem" href="<?php fUrl('admin/link/lists');?>">友情链接</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<?php fUrl('admin/index/upload');?>">上传设置</a>
                         </li>
                         <li>
-                            <a class="J_menuItem" href="<?php fUrl('admin/index/nav');?>">导航管理</a>
+                            <a class="J_menuItem" href="<?php fUrl('admin/nav/lists');?>">导航管理</a>
                         </li>
                         <li>
                             <a class="J_menuItem" href="<?php fUrl('admin/index/nav');?>">幻灯片管理</a>
@@ -57,7 +57,6 @@
                         <li>
                             <a class="J_menuItem" href="<?php fUrl('admin/index/nav');?>">邮箱配置</a>
                         </li>
-
                     </ul>
                 </li>
                 <!--<li>-->
@@ -467,7 +466,6 @@
 <script>
     $(function(){
         $('#refresh').click(function () {
-            // document.frames('J_iframe').location.reload()
             document.getElementById('J_iframe').contentWindow.location.reload(true);
         })
 

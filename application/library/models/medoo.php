@@ -18,7 +18,7 @@ class Raw {
 	public $value;
 }
 
-class Medoo
+class medoo
 {
 	public $pdo;
 

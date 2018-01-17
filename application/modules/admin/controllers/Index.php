@@ -5,6 +5,7 @@
  * @author 胡扬星
  * @createtime : 2018/1/8
  */
+use  models\admin\adminUser;
 class IndexController extends  common\admin {
         function init()
         {
@@ -17,7 +18,7 @@ class IndexController extends  common\admin {
         }
         public function testAction()
         {
-//            echo 1;
+            //echo 1;
         }
         public function mainAction()
         {
@@ -26,7 +27,19 @@ class IndexController extends  common\admin {
         }
         public function settingAction()
         {
-            $data = '';
+            $admin = new adminUser();
+            $info =  $admin->test();
+            $data = $info;
             $this->getView()->assign('data',$data)->display('index/setting.html');
+        }
+
+        public function listsAction()
+        {
+            echo 3;
+        }
+
+        public function uploadAction()
+        {
+                $this->_display();
         }
  }

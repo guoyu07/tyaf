@@ -105,7 +105,7 @@ class Bootstrap extends Yaf\Bootstrap_Abstract
         // 数据库连接池方案 尚未解决
         //new db();
         //die;
-        $db = new \models\Medoo([
+        $db = new \models\medoo([
             'database_type' => 'mysql',
             'database_name' => $this->_config->db->database,
             'server' => $this->_config->db->hostname,

@@ -18,6 +18,22 @@ class admin extends \common\controller{
         {
             $this->redirect(YUrl::createBackendUrl('admin', 'login', 'login'));
         }
-        $this->getView()->setScriptPath(VIEWS_PATH."/templates/hadmin/admin");
+        $this->getView()->setScriptPath(VIEWS_PATH."/templates/hadmin/{$this->getRequest()->module}");
     }
+
+    public function listsAction()
+    {
+        echo 1;
+    }
+
+    public function editAction()
+    {
+
+    }
+
+    public function delAction()
+    {
+
+    }
+
 }
