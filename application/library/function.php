@@ -291,7 +291,7 @@ function sendmail( $toemail, $title, $content)
     // 设置发送的邮件的编码
     $mail->CharSet = 'UTF-8';
     // 设置发件人昵称 显示在收件人邮件的发件人邮箱地址前的发件人姓名
-    $mail->FromName = '发件人昵称';
+    $mail->FromName = '我不告诉你哈哈哈哈哈哈';
     // smtp登录的账号 QQ邮箱即可
     $mail->Username = 'vate96@foxmail.com';
     // smtp登录的密码 使用生成的授权码

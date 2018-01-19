@@ -37,9 +37,8 @@ class IndexController extends  common\admin {
         {
             echo 3;
         }
-
         public function uploadAction()
         {
-                $this->_display();
+            $this->_display();
         }
  }

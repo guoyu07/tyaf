@@ -22,11 +22,11 @@ class IndexController extends common\controller
      */
     public function indexAction()
     {
-        $toemail = 'vate96@163.com';
-        $title = '测试';
-        $content = '<h1>Hello World</h1>';
-        $send = sendmail($toemail,$title,$content);
-        dd($send);
+//        $toemail = 'vate96@163.com';
+//        $title = '测试';
+//        $content = '<h1>德玛西亚人万岁</h1>';
+//        $send = sendmail($toemail,$title,$content);
+//        dd($send);
     }
 
     public function testAction()

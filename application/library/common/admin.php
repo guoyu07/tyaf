@@ -23,7 +23,7 @@ class admin extends \common\controller{
 
     public function listsAction()
     {
-        echo 1;
+        $this->_display();
     }
 
     public function editAction()
