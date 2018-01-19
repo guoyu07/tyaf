@@ -14,7 +14,7 @@ class IndexController extends  common\admin {
         public function indexAction()
         {
             $data = '';
-            $this->getView()->assign('data',$data)->display('index/index.html');
+            $this->getView()->assign('data',$data)->display('Index/index.html');
         }
         public function testAction()
         {
@@ -23,14 +23,14 @@ class IndexController extends  common\admin {
         public function mainAction()
         {
             $data = '';
-            $this->getView()->assign('data',$data)->display('index/main.html');
+            $this->getView()->assign('data',$data)->display('Index/main.html');
         }
         public function settingAction()
         {
             $admin = new adminUser();
             $info =  $admin->test();
             $data = $info;
-            $this->getView()->assign('data',$data)->display('index/setting.html');
+            $this->getView()->assign('data',$data)->display('Index/setting.html');
         }
 
         public function listsAction()
